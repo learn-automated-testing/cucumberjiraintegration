@@ -1,17 +1,15 @@
+/**
+ * This is a Cucumber.js profile
+ * @see https://github.com/cucumber/cucumber-js/blob/main/docs/profiles.md
+ *
+ * @type {{default: string}}
+ */
 module.exports = {
-  default: {
-    require: ['features/step_definitions/**/*.ts'],  // Path to your step definitions
-    format: [
-      '@serenity-js/cucumber',                      // Serenity/JS formatter for interaction with Serenity BDD
-     // 'json:target/site/serenity/cucumber_report.json',          // JSON formatter to generate Cucumber JSON report
-      'progress'                                    // Shows progress in the console while tests run
-    ],
-    formatOptions: {
-      specDirectory: './features'
-  },
-    parallel: 1,                                    // Optional: Use 1 if you don’t want to run tests in parallel
-    requireModule: ['ts-node/register'],            // Required to handle TypeScript step definitions
-    defaultTimeout: 60 * 1000,                      // Timeout for each step in milliseconds
-  }
+    default: [
+        `--require-module 'ts-node/register'`,              // use TypeScript in-memory transpiler, ts-node
+        `--format "@serenity-js/cucumber"`,                 // use Serenity/JS Cucumber adapter - https://serenity-js.org/modules/cucumber/
+        `--format-options '{"specDirectory": "features"}'`, // configure the adapter
+        `--require "./features/**/*.steps.ts"`,             // load step definition libraries
+        `--require './features/**/*.config.ts'`              // load configuration files, such as features/support/
+    ].join(' ')
 };
-

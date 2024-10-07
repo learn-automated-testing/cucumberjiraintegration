@@ -1,15 +1,25 @@
 {
-    "compilerOptions": {
-      "target": "ES2019",        // Set target to ES2019
-      "module": "commonjs",      // Use CommonJS for compatibility with Node.js
-      "strict": true,            // Enable strict type-checking options
-      "esModuleInterop": true,   // Enable interoperability between CommonJS and ESModules
-      "skipLibCheck": true,      // Skip type checking of declaration files
-      "moduleResolution": "node", // Use Node.js module resolution
-      "outDir": "./dist",        // Output directory for compiled files
-      "typeRoots": ["./node_modules/@types"]  // Type definitions
-    },
-    "include": ["features/**/*.ts"],  // Include TypeScript files in this path
-    "exclude": ["node_modules"]       // Exclude node_modules directory
-  }
-  
+  "compilerOptions": {
+    "target": "es2019",
+    "lib": ["es2019", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "declaration": true,
+    "types": [
+      "node"
+    ]
+  },
+
+  "include": [
+    "features/**/*.ts",
+    "test/**/*.ts"
+  ],
+
+  "exclude": [
+    "node_modules"
+  ]
+}
